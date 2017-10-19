@@ -6,14 +6,14 @@ resource "aws_cloudwatch_event_rule" "builds" {
     name = "codebuild-to-${var.topic_name}"
     event_pattern = <<PATTERN
 {
-    "source": ["aws.codebuild"]
-    "detail-type": ["CodeBuild Build State Change"]
+    "source": ["aws.codebuild"],
+    "detail-type": ["CodeBuild Build State Change"],
     "detail": {
         "build-status": [
             "IN_PROGRESS",
             "SUCCEEDED", 
             "FAILED",
-            "STOPPED",
+            "STOPPED"
         ]
     }
 }
